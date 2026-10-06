@@ -69,15 +69,9 @@ jobs:
           cd anykernel
           rm -f zImage *.dtb
 
-          if [ -f "../out/arch/${KERNEL_ARCH}/boot/zImage" ]; then
-            cp ../out/arch/${KERNEL_ARCH}/boot/zImage zImage
-            echo "✓ Copied zImage"
-          elif [ -f "../out/arch/${KERNEL_ARCH}/boot/Image.gz" ]; then
-            cp ../out/arch/${KERNEL_ARCH}/boot/Image.gz Image.gz
-            echo "✓ Copied Image.gz"
-          elif [ -f "../out/arch/${KERNEL_ARCH}/boot/Image" ]; then
-            cp ../out/arch/${KERNEL_ARCH}/boot/Image Image
-            echo "✓ Copied Image"
+          if [ -f "../out/arch/${KERNEL_ARCH}/boot/zImage-dtb" ]; then
+            cp ../out/arch/${KERNEL_ARCH}/boot/zImage-dtb zImage-dtb
+            echo "✓ Copied zImage-dtb"
           else
             echo "✗ No kernel image found!"
             ls -lah ../out/arch/${KERNEL_ARCH}/boot/
@@ -88,7 +82,7 @@ jobs:
 
           cat > anykernel.sh << 'EOF'
           properties() { '
-          kernel.string=Five kernel for j2lte by CarlosComC on XDA
+          kernel.string=3475Kernel for j2lte by CarlosComC on XDA
           do.devicecheck=1
           device.name1=j2lte
           device.name2=J200BT
@@ -111,13 +105,13 @@ jobs:
           write_boot;
           EOF
 
-          zip -r9 "../Five-Kernel-${{ github.sha }}.zip" * -x .git README.md *placeholder
+          zip -r9 "../3475Kernel-${{ github.sha }}.zip" * -x .git README.md *placeholder
 
       - name: Upload AnyKernel package
         uses: actions/upload-artifact@v4
         with:
-          name: Five-Kernel
-          path: Five-Kernel-${{ github.sha }}.zip
+          name: 3475Kernel
+          path: 3475Kernel-${{ github.sha }}.zip
           archive: false
           retention-days: 30
           compression-level: 0
