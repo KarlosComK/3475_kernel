@@ -67,7 +67,7 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/Iam-nishan/anykernel.git anykernel
           cd anykernel
-          rm -f zImage *.dtb
+          rm -f zImage zImage-dtb Image Image.gz *.dtb
 
           if [ -f "../out/arch/${KERNEL_ARCH}/boot/zImage-dtb" ]; then
             cp ../out/arch/${KERNEL_ARCH}/boot/zImage-dtb zImage-dtb
