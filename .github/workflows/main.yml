@@ -102,7 +102,7 @@ jobs:
           do.cleanuponabort=0
           '; }
 
-          block=/dev/block/bootdevice/by-name/BOOT;
+          block=/dev/block/platform/13540000.dwmmc0/by-name/BOOT;
           is_slot_device=0;
           ramdisk_compression=auto;
 
